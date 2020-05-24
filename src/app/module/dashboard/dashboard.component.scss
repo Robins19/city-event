@@ -1,0 +1,13 @@
+.dashboard-parent{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .dashboard-content-container{
+    padding: 10px 5px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100%);
+
+  }

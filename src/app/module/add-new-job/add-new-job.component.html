@@ -1,0 +1,220 @@
+<app-header></app-header>
+<div class="wrapper d-flex align-items-stretch">
+	<!-- Page Content  -->
+	<div id="content" class="">
+
+		<div class="main_container" style="margin-top: 44px;">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 mx-auto">
+						<h1 class="mt-4 mb-5">Offer a new job</h1>
+		
+	
+	
+						<!-- <h4 style="font-weight: 600;">Choose from your past offered jobs</h4> -->
+						<hr class="mb-3 mt-3">
+					
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-lg-9">
+						<h4 style="font-weight: 600;">Add a new job</h4>
+					</div>
+					<div class="col-lg-9">
+						<p class="error-msg-form pri_det mt-2" *ngIf="isInvalidJob" style="color:red"> {{createJobErrormsg}} </p>
+					</div>
+					
+				</div>
+
+				<div class="row">
+					<div class="col-lg-9 border_right">
+						<div class="row">
+							<div class="col-lg-12">
+								<form action="" [formGroup]="createJobForm">
+
+									<div class="form-group">
+
+										<input type="text" class="form-control form-control-lg " id="usr"
+											name="username" placeholder="What’s the job title?"
+											formControlName="job_title">
+									</div>
+									<div class="form-group">
+
+										<input type="text" class="form-control form-control-lg" id="usr" name="username"
+											[(ngModel)]="autocompleteInput" #addresstext
+											placeholder="Where is this job?" [ngModelOptions]="{standalone: true}">
+									</div>
+									<div class="form-group">
+
+										<input type="number" class="form-control form-control-lg" id="usr"
+											name="username" placeholder="How much do you want to pay?"
+											formControlName="amount">
+									</div>
+									<div class="form-group">
+										<select id="" class="form-control form-control-lg"
+											formControlName="job_category">
+											<!-- <option  [value]=""  selected>Job Category/Type of work </option> -->
+											<option value="" disabled selected hidden>Job Category/Type of work</option>
+											<option [value]="jobList._id" *ngFor="let jobList of allCategoryJobList">
+												{{jobList.name}}</option>
+										</select>
+									</div>
+									<div class="form-row">
+										<!-- <div class="form-group col-md-6">
+								  <label for="inputEmail4">From</label>
+								  <span class="fa fa-calendar form-control-feedback"></span>
+								  <input type="date" class="form-control form-control-lg" id="inputEmail4" placeholder="">
+								</div> -->
+										<div class="form-group col-md-6">
+											<label for="inputEmail4">From</label>
+											<div class="input-group">
+												<div class="input-group-prepend">
+												  <span class="input-group-text" id=""><i class="fa fa-calendar" aria-hidden="true"></i></span>
+												</div>
+											 <input type="text" class="form-control form-control-lg" #sd name="startDate" id="startDate" formControlName="Start_date"
+											 [ngModelOptions]="{standalone: true}"  placeholder="Date"/>
+												<input placeholder="Time" class="timepicker classic form-control form-control-lg" id="startTime" formControlName="Start_time">
+												<div class="input-group-prepend">
+													<span class="input-group-text" id=""><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+												  </div>
+											  </div>
+											<!-- <div class="input-group"> -->
+												<!-- <div class="input-group-append">
+											
+													<p-calendar [(ngModel)]="selectDate"
+														[ngModelOptions]="{standalone: true}" placeholder="Start Date"
+														 [minDate]="minimumDate" tabindex="0" [disabledDates]="invalidDates" [readonlyInput]="true"></p-calendar>
+
+												</div> -->
+
+												<!-- <div class="input-group-append" style="margin-top: 0px;width:43%;">
+													<p-calendar (onSelect)="onSelect($event)"
+														[(ngModel)]="selectedStartTime" timeOnly="true" [showTime]="true" [ngModelOptions]="{standalone: true}" placeholder="Start Time">
+																										</p-calendar>
+																										
+												</div> -->
+										
+											<!-- </div> -->
+										</div>
+										<div class="form-group col-md-6">
+											<label for="inputEmail4">Until</label>
+											<div class="input-group">
+												<div class="input-group-prepend">
+												  <span class="input-group-text" id=""><i class="fa fa-calendar" aria-hidden="true"></i></span>
+												</div>
+										           <input type="text" class="form-control form-control-lg" #ed name="endDate" id="endDate" formControlName="end_date" placeholder="Date"/>
+													<input placeholder="Time" class="timepicker classic form-control form-control-lg" id="endTime" formControlName="end_time">
+													<div class="input-group-prepend">
+														<span class="input-group-text" id=""><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+													  </div>
+											  </div>
+											<!-- <div class="input-group">
+											<div class="input-group-append"> -->
+												<!-- <span class="input-group-text"><i class="fa fa-calendar"
+														aria-hidden="true"></i></span> -->
+												<!-- <p-calendar [(ngModel)]="selectDate2"
+													[ngModelOptions]="{standalone: true}"  placeholder="End Date"
+													 [minDate]="minimumDate" tabindex="0" [disabledDates]="invalidDates" [readonlyInput]="true"></p-calendar>
+
+											</div>
+											<div class="input-group-append" style="margin-top: 0px;width:43%;">
+												<p-calendar (onSelect)="onSelectEndTime($event)"
+													[(ngModel)]="selectedEndTime" timeOnly="true" [ngModelOptions]="{standalone: true}" placeholder="End Time">
+												</p-calendar>
+											</div>
+										</div> -->
+										</div>
+									</div>
+
+
+									<div class="form-group">
+
+										<textarea class="form-control" placeholder="Describe your job more detailed"
+											rows="4" id="comment" formControlName="description"></textarea>
+									</div>
+								</form>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-lg-3">
+
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-12 mx-auto text-left">
+									
+									<label class="newbtn">
+									<a  id="blah" class="our_color"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Add Photos</a>
+	
+									<div><a  class="our_color"></a></div>
+										<!-- <span ><img id="blah"
+												src="assets/images/cover_img.png"></span> -->
+
+										<input id="pic" class='pis' type="file" multiple (change)=" onUpload($event)">
+										
+									</label>
+								<div class="row">
+									<div class="col-6" *ngFor="let url of urls;let i=index;">
+										<span><span (click)="onUpload(i)" class="remove_btn"><i class="fa fa-times-circle " aria-hidden="true"></i></span><img id="blah" [src]="url"></span>
+									</div>
+								</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-4 mb-4">
+					<div class="col-lg-9">
+						<div class="row">
+							<div class="col-lg-6 mx-auto">
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<button type="submit" class="btn bg_color btn-block btn-lg"
+											(click)="onAddedNewJob()">Save</button>
+									</div>
+
+									<div class="form-group col-md-12">
+										<button type="submit" class="btn btn-block border btn-lg"
+											[routerLink]="['/dashboard']">Cancel</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+<!--  success fully Modal -->
+<div class="modal fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="Profile_updte" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+	  <div class="modal-content">
+  
+		<div class="modal-body">
+			  
+			  <div class="text-center">
+				<div class="tk_content">
+					  <h3 class="font-weight-bold">City Event</h3>
+				  </div>
+				  <div class="tk_content mb-4 mt-4">
+					  <h3>Job added successfully!</h3>
+				  </div>
+				  <div class="tk_button mt-3">
+					  <button type="button" class="btn btn-Green w-25" data-dismiss="modal" [routerLink]="['/dashboard']">OK</button>
+				  </div>
+			  
+			  
+			  </div>
+		</div>
+   
+	  </div>
+	</div>
+  </div>

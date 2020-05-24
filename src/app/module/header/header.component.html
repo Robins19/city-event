@@ -1,0 +1,23 @@
+<header class="app-header navbar navbar-dark mb-0 py-0 ">
+	
+
+
+	<!-- <a class="app-header__bal app_none"><span class="">BALANCE</span> £432,00</a> -->
+
+	<!-- Navbar Right Menu-->
+	<ul class="app-nav">
+	
+		<!-- User Menu-->
+		
+		<li class="dropdown">
+				<a class="app-nav__item nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><img [src]="this.profilePic?this.profilePic:'assets/images/placeholder-100x100.png'" class="rounded-circle" height="25" width="25"></a>
+				
+				<div class="dropdown-menu">
+				  <a class="dropdown-item" (click)="logOut()">Logout</a>
+				  <a class="dropdown-item"  (click)="onClickSettings()">Settings</a>
+				  <a class="dropdown-item"  (click)="onClickExpired()">Archieve</a>
+				</div>
+		</li>
+		
+	</ul>
+</header>

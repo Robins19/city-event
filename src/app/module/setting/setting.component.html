@@ -1,0 +1,124 @@
+
+     <app-header></app-header>
+     <div class="wrapper d-flex align-items-stretch">
+    <!-- Page Content  -->
+  <div id="content" class="">
+    
+    <div class="main_container" style="margin-top: 44px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mx-auto">
+                    <h1 class="mt-4 mb-5">Edit Profile</h1>
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-9 border_right">
+                    <div class="row">
+                        <div class="col-lg-11 ">
+                            <form  [formGroup]="editForm">
+                                <div class="form-group">
+                                  <label for="">Full Name</label>
+                                  <input type="text" class="form-control form-control-lg" id="usr"  placeholder="" formControlName="full_name">
+                                  <div *ngIf="submitted && f.full_name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.full_name.errors.required">Full name is required</div>
+                                  </div>
+                                </div>
+ 
+                                <div class="form-group">
+                                  <label for="">Email</label>
+                                  <input type="email" class="form-control form-control-lg email-field" id="usr"  placeholder="" formControlName="email">
+                                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Phone Number</label>
+                                  <input type="text" class="form-control form-control-lg" id="usr" placeholder="" formControlName="phone">
+                                  <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.phone.errors.required">Phone number is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Passsword</label>
+                                  <input type="password" class="form-control form-control-lg" id="usr" name="username" placeholder="" formControlName="password">
+                                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Passsword is required</div>
+                                  </div>
+                                </div>
+                                
+                        
+                             </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                        
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto text-center">
+                            <label class="newbtn">
+                                <img id="blah" [src]="profilePic?profilePic:'assets/images/cover_img.png'" >
+                                <input id="pic" class='pis' onchange="readURL(this);" (change)="onUpload($event);"  type="file" >
+                            </label>
+                            <p><small>Add Profile photo</small></p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+    <div class="row mt-4 mb-4">
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn bg_color btn-block btn-lg" (click)="onSubmitEditForm()">Save</button>
+                        </div>
+                        
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-block border btn-lg" (click)="onBack()">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+        
+        </div>
+        
+        </div>
+        
+    </div>
+  </div>
+
+
+  
+<!--  success fully Modal -->
+<div class="modal fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="Profile_updte" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+
+    <div class="modal-body">
+          
+          <div class="text-center">
+            <div class="tk_content">
+                  <h3 class="font-weight-bold">City Event</h3>
+              </div>
+              <div class="tk_content mb-4 mt-4">
+                  <h3>Profile updated successfully!</h3>
+              </div>
+              <div class="tk_button mt-3">
+                  <button type="button" class="btn btn-Green w-25" data-dismiss="modal" (click)="onModalClosed()">OK</button>
+              </div>
+          
+          
+          </div>
+    </div>
+
+  </div>
+</div>
+</div>

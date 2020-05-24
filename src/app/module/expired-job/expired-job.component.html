@@ -1,0 +1,58 @@
+<app-header></app-header>
+		<div class="wrapper d-flex align-items-stretch">
+	
+	
+        <!-- Page Content  -->
+      <div id="content" class="" style="margin-top: 67px;">
+	
+   
+		<div class="">
+			<div class="container-fluid">
+					<div class="mb-3 mt-3 px-3">
+						<div class="row align-self-center">
+							<div class="col col-lg-6">
+							
+								<button type="button" [routerLink]="['/add-job']" class="btn text-black  add_job_btn text-left" tabindex="0"><img src="assets/images/add.png" class="mr-3" width="15px" height="15px">Add new job</button>
+							</div>
+						
+						
+						</div>
+							
+					</div>
+					
+				<div class="row px-3">
+					
+				<div class="col-sm-12 col-md-4 col-lg-4" *ngFor="let jobList of allJobListData">
+					<div class="card booking-card shadow mb-2">
+
+							  <!-- Card image -->
+							  <div class="view overlay">
+								<img class="card-img-top" [src]="jobList.images[0]?jobList.images[0]: '../assets/images/image-placeholder.svg'"
+								alt="" height="150px;">
+								<a href="#!">
+								  <div class="mask rgba-white-slight"></div>
+								</a>
+							  </div>
+
+							  <!-- Card content -->
+							  <div class="card-body">
+
+								<!-- Title -->
+								<h4 class="card-title card_title font-weight-bold mb-2"><a>{{jobList.title}}</a></h4>
+								<p class="mb-2 our_grey card_date f-12">{{jobList.startAt | date:"d MMMM"}} at {{jobList.startAt | date:'shortTime'}}</p>
+								<p class="mb-2 our_color card_loction"><img src="assets/images/place.png" class="mr-2 mb-1" width="15px" height="">{{jobList.job_location }}<span class="text-white pull-right btn-secondary rounded">£{{jobList.amount}}</span></p>
+							
+
+							  </div>
+
+							</div>
+				</div>
+				
+				
+			<div *ngIf="!isJobFound" class="no_job_found">
+				<h3 class="text-center">No expired job found</h3>
+			</div>
+		</div>
+      </div>
+
+		</div>
